@@ -3,7 +3,7 @@ import {reducer} from './reducer';
 import * as action from './actions';
 
 const initalState = {
-  hideBought: '',
+  hideBought: false,
   items: {
     milk: {
       price: 10,
@@ -21,7 +21,7 @@ document.body.appendChild(container);
 store.subscribe(() => {
   const state = store.getState();
 
-  const ul = document.createElement('ul');
+  const shoppingList = document.createElement('ul');
   for (let name in state.items) {
     if (state.items.hasOwnProperty(name)) {
 
@@ -31,11 +31,16 @@ store.subscribe(() => {
 
       const li = document.createElement('li');
       li.innerHTML = '<strong>' + name + '</strong>, ' + state.items[name].price + ', ' + (state.items[name].bought ? 'bought' : 'not bought');
-      ul.appendChild(li);
+      shoppingList.appendChild(li);
     }
   }
+
+  const step = document.createElement('div');
+  step.innerHTML = '<strong>Step</strong>: ' + state.step;
+
   container.innerHTML = '';
-  container.appendChild(ul);
+  container.appendChild(step);
+  container.appendChild(shoppingList);
 });
 
 window['store'] = store;
