@@ -38,7 +38,7 @@ function itemsReducer(items = [], action) {
   return newItems;
 }
 
-function stepReducer(step = -1, action) {
+function stepReducer(step = 0, action) {
   return step + 1;
 }
 

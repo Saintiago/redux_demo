@@ -43,7 +43,8 @@ store.subscribe(() => {
   container.appendChild(shoppingList);
 });
 
+store.dispatch(action.showAll());
+
 window['store'] = store;
 window['action'] = action;
 
-store.dispatch(action.showAll());
